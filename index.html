@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Social Blog+</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Social Blog+</h1>
+
+  <div id="auth">
+    <input id="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+    <input id="username" placeholder="Username (signup only)" />
+    <button onclick="signUp()">Sign Up</button>
+    <button onclick="signIn()">Login</button>
+    <button onclick="signOut()">Logout</button>
+  </div>
+
+  <div id="postBox" style="display:none;">
+    <textarea id="content" maxlength="280" placeholder="What's happening? (280 chars)"></textarea>
+    <div id="charCount">0 / 280</div>
+    <button onclick="createPost()">Post</button>
+  </div>
+
+  <div id="posts"></div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
