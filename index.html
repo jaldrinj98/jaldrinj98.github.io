@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Private Dark Blog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="login">
+    <h2>Admin Login</h2>
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="login()">Login</button>
+    <p id="error"></p>
+  </div>
+
+  <div id="blog" style="display:none;">
+    <header>
+      <h1>My Private Blog</h1>
+      <p>Only I can post here.</p>
+    </header>
+
+    <main id="posts">
+      <article>
+        <h2>First Private Post</h2>
+        <p class="date">January 2026</p>
+        <p>This blog is editable only after login.</p>
+      </article>
+    </main>
+
+    <section class="editor">
+      <h3>New Post</h3>
+      <input type="text" id="title" placeholder="Post title" />
+      <textarea id="content" placeholder="Write your post..."></textarea>
+      <button onclick="addPost()">Publish</button>
+    </section>
+
+    <footer>
+      <p>© 2026 My Private Blog</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
