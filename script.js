@@ -26,17 +26,17 @@ async function signUp() {
 }
 
 async function signIn() {
-  await supabase.auth.signInWithPassword({
+  await supabaseClient.auth.signInWithPassword({
     email: email.value,
     password: password.value
   });
 }
 
 async function signOut() {
-  await supabase.auth.signOut();
+  await supabaseClient.auth.signOut();
 }
 
-supabase.auth.onAuthStateChange((_event, session) => {
+supabaseClient.auth.onAuthStateChange((_event, session) => {
   currentUser = session?.user || null;
   document.getElementById("postBox").style.display =
     session ? "block" : "none";
@@ -45,7 +45,7 @@ supabase.auth.onAuthStateChange((_event, session) => {
 async function createPost() {
   if (!content.value) return;
 
-  await supabase.from("posts").insert({
+  await supabaseClient.from("posts").insert({
     content: content.value,
     username: currentUser.user_metadata.username
   });
@@ -67,10 +67,10 @@ function renderPost(p, isAdmin) {
 }
 
 async function deletePost(id) {
-  await supabase.from("posts").delete().eq("id", id);
+  await supabaseClient.from("posts").delete().eq("id", id);
 }
 
-supabase
+supabaseClient
   .channel("posts-live")
   .on(
     "postgres_changes",
@@ -80,7 +80,7 @@ supabase
   .subscribe();
 
 async function loadPosts() {
-  const { data } = await supabase
+  const { data } = await supabaseClient
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });
