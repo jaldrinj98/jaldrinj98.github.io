@@ -2,13 +2,14 @@
 const SUPABASE_URL = "https://eyozkgejcswayxqpjmeg.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_h3X2cg3763Os0T-s9G7cvQ_VmitJMKm";
 
-const supabase = window.supabase.createClient(
+// ✅ use a DIFFERENT name
+const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_ANON_KEY
 );
 
-
 let currentUser = null;
+
 
 content?.addEventListener("input", () => {
   charCount.innerText = content.value.length + " / 280";
